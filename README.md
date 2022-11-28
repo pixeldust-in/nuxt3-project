@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
 
 ```
 
-- To call a server route in a component, call it using useFetch method in `<script setup>` tag:
+- To call a server route in a component, call it using `useFetch` method in `<script setup>` tag:
 
 ```jsx
 //pages/index.vue
