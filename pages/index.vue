@@ -3,8 +3,8 @@
     <h1 class="text-3xl underline">Home Page</h1>
     <ul>
       <li
-        v-if="posts && posts.length"
-        v-for="post in posts"
+        v-if="postStore.posts && postStore.posts.length"
+        v-for="post in postStore.posts"
         :key="`post-${post.id}`"
       >
         <NuxtLink :to="`posts/${post.id}`" class="text-blue-400">
@@ -16,7 +16,11 @@
 </template>
 
 <script setup lang="ts">
-const { data: posts } = useFetch<{ id: number; title: string }[]>("/api/posts");
+const postStore = usePostStore();
+
+onMounted(async () => {
+  await postStore.fetchPosts();
+});
 </script>
 
 <style scoped></style>

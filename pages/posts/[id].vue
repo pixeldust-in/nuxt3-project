@@ -4,9 +4,13 @@
 
 <script setup lang="ts">
 const route = useRoute();
-const { data: post } = useFetch<{ id: number; title: string }>(
-  `/api/posts/${route.params.id}`
-);
+// Show error on UI
+const {
+  data: post,
+  pending,
+  refresh,
+  error,
+} = useFetch<{ id: number; title: string }>(`/api/posts/${route.params.id}`);
 </script>
 
 <style scoped></style>

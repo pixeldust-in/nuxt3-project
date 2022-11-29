@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
+  imports: { dirs: ["stores"] },
   css: ["~/assets/css/main.css"],
   postcss: {
     plugins: {
@@ -10,4 +11,5 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  modules: ["@pinia/nuxt"],
 });
