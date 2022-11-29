@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
     return data;
   } else if (event.node.req.method === "POST") {
     const body = await readBody(event);
-    const data = await $fetch("<https://jsonplaceholder.typicode.com/posts>", {
+    const data = await $fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
       body,
     });
