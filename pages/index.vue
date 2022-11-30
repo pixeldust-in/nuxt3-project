@@ -12,15 +12,23 @@
         </NuxtLink>
       </li>
     </ul>
+    <button @click="refreshPosts">Refresh Posts</button>
   </div>
 </template>
 
 <script setup lang="ts">
 const postStore = usePostStore();
 
-onMounted(async () => {
-  await postStore.fetchPosts();
-});
+const { pending, refresh, error } = await useAsyncData<
+  void,
+  { statusCode: number; name: string; message: string; stack: string }
+>(postStore.fetchPosts);
+console.log(`pending: ${pending.value}`);
+console.log(error.value);
+
+const refreshPosts = async () => {
+  await refresh();
+};
 </script>
 
 <style scoped></style>
