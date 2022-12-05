@@ -1,7 +1,7 @@
 export default defineEventHandler(async (event) => {
   if (event.node.req.method === "GET") {
     const data = await $fetch<{ id: number; title: string }[]>(
-      "https://jsonplaceholder.typicode.com/posts",
+      "http://localhost:8000/posts/",
       {
         onResponseError({ response }) {
           console.log(response);
