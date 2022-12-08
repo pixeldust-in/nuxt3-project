@@ -19,12 +19,10 @@
 <script setup lang="ts">
 const postStore = usePostStore();
 
-const { pending, refresh, error } = await useAsyncData<
+const { refresh } = await useAsyncData<
   void,
   { statusCode: number; name: string; message: string; stack: string }
 >(postStore.fetchPosts);
-console.log(`pending: ${pending.value}`);
-console.log(error.value);
 
 const refreshPosts = async () => {
   await refresh();

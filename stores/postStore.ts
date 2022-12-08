@@ -6,7 +6,6 @@ export const usePostStore = defineStore("posts", () => {
 
   const fetchPosts = async () => {
     const data = await $fetch<{ id: number; title: string }[]>("/api/posts");
-    console.log(data);
     posts.value = data;
   };
 
